@@ -1,0 +1,40 @@
+[
+  {
+    "id": "sample-text-generation",
+    "displayName": "Text generation model (mock)",
+    "workload": "text-generation",
+    "runtime": "mock",
+    "artifactType": "directory",
+    "artifactPath": "sample-text-generation",
+    "modelFile": "",
+    "externalDataFiles": [],
+    "runtimeConfig": "",
+    "tokenizerFiles": [],
+    "chatTemplate": "",
+    "maxInputTokens": 0,
+    "maxNewTokens": 64,
+    "embeddingDimensions": 0,
+    "normalizeEmbeddings": false,
+    "inputTensorNames": [],
+    "outputTensorNames": []
+  },
+  {
+    "id": "sample-text-embedding",
+    "displayName": "Text embedding model (mock)",
+    "workload": "text-embedding",
+    "runtime": "mock",
+    "artifactType": "directory",
+    "artifactPath": "sample-text-embedding",
+    "modelFile": "",
+    "externalDataFiles": [],
+    "runtimeConfig": "",
+    "tokenizerFiles": [],
+    "chatTemplate": "",
+    "maxInputTokens": 0,
+    "maxNewTokens": 0,
+    "embeddingDimensions": 384,
+    "normalizeEmbeddings": true,
+    "inputTensorNames": [],
+    "outputTensorNames": []
+  }
+]
