@@ -1,0 +1,24 @@
+# Gradle and Android Studio generated files
+.gradle/
+.kotlin/
+build/
+app/build/
+.idea/
+*.iml
+local.properties
+
+# Generated model-inspection output
+android_model_config.json
+model-context/
+
+# Local runtime/model artifacts
+*.aar
+*.pte
+*.tflite
+*.litertlm
+*.onnx
+*.bin
+*.safetensors
+
+# OS files
+.DS_Store
