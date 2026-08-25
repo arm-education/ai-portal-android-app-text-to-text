@@ -1,0 +1,27 @@
+[
+  {
+    "id": "llama-3-2-1b-instruct-litertlm-int8",
+    "displayName": "Llama 3.2 1B Instruct INT8",
+    "workload": "text-generation",
+    "runtime": "litert-lm",
+    "artifactType": "file",
+    "artifactPath": "llama-3-2-1b-instruct-litertlm-int8",
+    "modelFile": "llama32_1b_instruct_native.litertlm",
+    "externalDataFiles": [],
+    "runtimeConfig": "config.yaml",
+    "tokenizerFiles": [
+      "special_tokens_map.json",
+      "tokenizer.json",
+      "tokenizer_config.json"
+    ],
+    "chatTemplate": "bundled",
+    "maxInputTokens": 191,
+    "maxNewTokens": 64,
+    "embeddingDimensions": 0,
+    "normalizeEmbeddings": false,
+    "inputTensorNames": [
+      "input_ids"
+    ],
+    "outputTensorNames": []
+  }
+]

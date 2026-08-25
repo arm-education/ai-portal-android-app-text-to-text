@@ -1,0 +1,27 @@
+[
+  {
+    "id": "bge-base-en-v1.5-int8-litert",
+    "displayName": "BGE base English v1.5 INT8 LiteRT",
+    "workload": "text-embedding",
+    "runtime": "litert",
+    "artifactType": "file",
+    "artifactPath": "bge-base-en-v1.5-int8-litert",
+    "modelFile": "bge-base-en-v1.5-int8-litert.tflite",
+    "externalDataFiles": [],
+    "runtimeConfig": "config.yaml",
+    "tokenizerFiles": [
+      "special_tokens_map.json",
+      "vocab.txt"
+    ],
+    "chatTemplate": "",
+    "maxInputTokens": 128,
+    "maxNewTokens": 0,
+    "embeddingDimensions": 768,
+    "normalizeEmbeddings": true,
+    "inputTensorNames": [
+      "input_ids",
+      "attention_mask"
+    ],
+    "outputTensorNames": []
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "tinyllama-1-1b-chat-onnx-genai-int4-kquantlast-emb-int8-vivo-x300",
+    "displayName": "TinyLlama 1.1B Chat ONNX GenAI INT4",
+    "workload": "text-generation",
+    "runtime": "onnxruntime",
+    "artifactType": "directory",
+    "artifactPath": "tinyllama-1-1b-chat-onnx-genai-int4-kquantlast-emb-int8-vivo-x300",
+    "modelFile": "model.onnx",
+    "externalDataFiles": [
+      "model.onnx.data"
+    ],
+    "runtimeConfig": "genai_config.json",
+    "tokenizerFiles": [
+      "special_tokens_map.json",
+      "tokenizer.json",
+      "tokenizer.model",
+      "tokenizer_config.json"
+    ],
+    "chatTemplate": "chat_template.jinja",
+    "maxInputTokens": 2048,
+    "maxNewTokens": 64,
+    "embeddingDimensions": 0,
+    "normalizeEmbeddings": false,
+    "inputTensorNames": [
+      "input_ids"
+    ],
+    "outputTensorNames": [
+      "logits"
+    ]
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "smollm2-360m-instruct-8da4w-xnnpack-executorch",
+    "displayName": "SmolLM2 360M Instruct 8da4w",
+    "workload": "text-generation",
+    "runtime": "executorch",
+    "artifactType": "file",
+    "artifactPath": "smollm2-360m-instruct-8da4w-xnnpack-executorch",
+    "modelFile": "smollm2-360m-instruct-8da4w-executorch.pte",
+    "externalDataFiles": [],
+    "runtimeConfig": "config.yaml",
+    "tokenizerFiles": [
+      "tokenizer/chat_template.jinja",
+      "tokenizer/tokenizer.json",
+      "tokenizer/tokenizer_config.json"
+    ],
+    "chatTemplate": "tokenizer/chat_template.jinja",
+    "maxInputTokens": 2047,
+    "maxNewTokens": 64,
+    "embeddingDimensions": 0,
+    "normalizeEmbeddings": false,
+    "inputTensorNames": [],
+    "outputTensorNames": []
+  },
+  {
+    "id": "sample-text-embedding",
+    "displayName": "Text embedding model (mock)",
+    "workload": "text-embedding",
+    "runtime": "mock",
+    "artifactType": "directory",
+    "artifactPath": "sample-text-embedding",
+    "modelFile": "",
+    "externalDataFiles": [],
+    "runtimeConfig": "",
+    "tokenizerFiles": [],
+    "chatTemplate": "",
+    "maxInputTokens": 0,
+    "maxNewTokens": 0,
+    "embeddingDimensions": 384,
+    "normalizeEmbeddings": true,
+    "inputTensorNames": [],
+    "outputTensorNames": []
+  }
+]

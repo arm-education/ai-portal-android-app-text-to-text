@@ -14,6 +14,8 @@ The app is intentionally model-independent. It provides:
 - runtime adapter stubs for ExecuTorch, LiteRT-LM, LiteRT embeddings, and ONNX
 - a mock runner so the UI can be checked before real runtime integration
 
+Validated adapter examples are provided under `adapter-examples/`. Use one of those examples when your selected model matches a validated integration. Keep the default app lightweight until you choose a runtime.
+
 ## Open the project
 
 Open this directory in Android Studio:
@@ -51,7 +53,7 @@ The script writes:
 - `model-context/model-summary.json`
 - small copied metadata files under `model-context/metadata`
 
-Use those files with the adapter-agent prompt shown in the Learning Path page.
+Use those files with one of the validated adapter examples, or with the adapter-agent prompt shown in the Learning Path page when your selected model does not match an example.
 
 Model files are loaded from:
 
