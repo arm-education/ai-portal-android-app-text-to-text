@@ -11,7 +11,8 @@ This example provides the minimal source files needed to apply the validated ONN
 ## Files
 
 - `app/src/main/assets/model_catalog.json`
-- `app/src/main/java/com/arm/learningpath/texttotext/OnnxTextGenerationAdapter.kt`
+- `app/src/main/java/com/arm/learningpath/texttotext/inference/models/tinyllama/OnnxTextGenerationAdapter.kt`
+- `app/src/main/java/com/arm/learningpath/texttotext/inference/RuntimeRunnerFactory.kt`
 - `app/build.gradle.kts`
 
 ## Important

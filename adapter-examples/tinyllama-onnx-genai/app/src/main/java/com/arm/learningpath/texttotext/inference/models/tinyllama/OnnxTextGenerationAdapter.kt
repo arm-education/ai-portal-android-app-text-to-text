@@ -1,4 +1,4 @@
-package com.arm.learningpath.texttotext
+package com.arm.learningpath.texttotext.inference.models.tinyllama
 
 import ai.onnxruntime.genai.Generator
 import ai.onnxruntime.genai.GeneratorParams
@@ -7,6 +7,9 @@ import ai.onnxruntime.genai.Model
 import ai.onnxruntime.genai.Tokenizer
 import org.json.JSONArray
 import org.json.JSONObject
+import com.arm.learningpath.texttotext.catalog.ModelConfig
+import com.arm.learningpath.texttotext.inference.RunResult
+import com.arm.learningpath.texttotext.inference.RuntimeRunner
 import java.io.File
 import kotlin.math.min
 

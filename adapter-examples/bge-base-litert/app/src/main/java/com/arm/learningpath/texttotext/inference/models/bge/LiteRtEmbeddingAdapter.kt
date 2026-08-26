@@ -1,9 +1,12 @@
-package com.arm.learningpath.texttotext
+package com.arm.learningpath.texttotext.inference.models.bge
 
 import org.json.JSONObject
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.Interpreter
 import org.tensorflow.lite.Tensor
+import com.arm.learningpath.texttotext.catalog.ModelConfig
+import com.arm.learningpath.texttotext.inference.RunResult
+import com.arm.learningpath.texttotext.inference.RuntimeRunner
 import java.io.File
 import java.text.Normalizer
 import java.util.Locale

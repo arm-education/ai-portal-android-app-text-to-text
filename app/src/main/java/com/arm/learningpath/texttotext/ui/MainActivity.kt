@@ -1,4 +1,4 @@
-package com.arm.learningpath.texttotext
+package com.arm.learningpath.texttotext.ui
 
 import android.app.Activity
 import android.graphics.Color
@@ -20,6 +20,11 @@ import android.widget.ListView
 import android.widget.PopupWindow
 import android.widget.ScrollView
 import android.widget.TextView
+import com.arm.learningpath.texttotext.catalog.ModelCatalog
+import com.arm.learningpath.texttotext.catalog.ModelConfig
+import com.arm.learningpath.texttotext.inference.RuntimeRunner
+import com.arm.learningpath.texttotext.inference.RuntimeRunnerFactory
+import com.arm.learningpath.texttotext.storage.ModelStorage
 import java.io.File
 
 class MainActivity : Activity() {
@@ -297,7 +302,7 @@ class MainActivity : Activity() {
     }
 
     private fun modelDir(config: ModelConfig): File {
-        return File(filesDir, "models/${config.id}")
+        return ModelStorage.modelDir(this, config)
     }
 
     private fun updateSelectedModelStatus() {

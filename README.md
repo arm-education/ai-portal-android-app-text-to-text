@@ -16,6 +16,33 @@ The app is intentionally model-independent. It provides:
 
 Validated adapter examples are provided under `adapter-examples/`. Use one of those examples when your selected model matches a validated integration. Keep the default app lightweight until you choose a runtime.
 
+## Project structure
+
+The app separates reusable infrastructure from runtime and model-specific code:
+
+```text
+app/src/main/java/com/arm/learningpath/texttotext/
+├── ui/
+├── catalog/
+├── storage/
+└── inference/
+    ├── embedding/
+    ├── generation/
+    ├── mock/
+    └── models/
+```
+
+The reusable shell lives in:
+
+- `ui/` for the Android activity and shared text input/result interface.
+- `catalog/` for catalog parsing and model metadata.
+- `storage/` for app-private model directory resolution.
+- `inference/` for the runtime adapter interface, result contract, and factory registration.
+
+The base app keeps mock and placeholder adapters under `inference/mock/`, `inference/generation/`, and `inference/embedding/`. Validated examples place model-specific implementations under `inference/models/<model-name>/` and replace `inference/RuntimeRunnerFactory.kt` so the selected catalog runtime maps to that implementation.
+
+For a new model, developers should normally update `model_catalog.json`, add or adapt a model-specific package under `inference/models/`, and register that adapter in `inference/RuntimeRunnerFactory.kt`. Keep tokenizer handling, tensor mapping, preprocessing, runtime execution, and output cleanup out of the UI layer so each part can be reviewed and tested independently.
+
 ## Open the project
 
 Open this directory in Android Studio:

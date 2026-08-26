@@ -1,4 +1,6 @@
-package com.arm.learningpath.texttotext
+package com.arm.learningpath.texttotext.inference
+
+import com.arm.learningpath.texttotext.catalog.ModelConfig
 
 import java.io.File
 
