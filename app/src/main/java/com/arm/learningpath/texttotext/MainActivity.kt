@@ -115,7 +115,7 @@ class MainActivity : Activity() {
             minLines = 4
             gravity = Gravity.TOP
             inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE
-            setText("Write one sentence about efficient AI on mobile.")
+            setText("Write one sentence explaining why on-device AI is more private than cloud AI.")
             setTextColor(colorTextPrimary)
             setHintTextColor(colorTextSecondary)
             background = roundedBackground(fillColor = colorSurface, strokeColor = colorBorder)
