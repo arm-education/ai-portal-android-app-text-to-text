@@ -9,11 +9,11 @@ import org.json.JSONArray
 import org.json.JSONObject
 import com.arm.learningpath.texttotext.catalog.ModelConfig
 import com.arm.learningpath.texttotext.inference.RunResult
-import com.arm.learningpath.texttotext.inference.RuntimeRunner
+import com.arm.learningpath.texttotext.inference.TextGenerationRunner
 import java.io.File
 import kotlin.math.min
 
-class OnnxTextGenerationAdapter : RuntimeRunner {
+class OnnxTextGenerationAdapter : TextGenerationRunner {
     private var config: ModelConfig? = null
     private var model: Model? = null
     private var tokenizer: Tokenizer? = null
@@ -98,10 +98,6 @@ class OnnxTextGenerationAdapter : RuntimeRunner {
         val output = cleanAssistantCompletion(completionText, renderedPrompt, prompt)
 
         return RunResult(output, loadTimeMs, elapsedMs(started))
-    }
-
-    override fun runEmbedding(text: String): RunResult {
-        error("OnnxTextGenerationAdapter supports text generation, not embeddings.")
     }
 
     override fun close() {

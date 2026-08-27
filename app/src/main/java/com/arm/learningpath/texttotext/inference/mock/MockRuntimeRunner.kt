@@ -2,13 +2,14 @@ package com.arm.learningpath.texttotext.inference.mock
 
 import com.arm.learningpath.texttotext.catalog.ModelConfig
 import com.arm.learningpath.texttotext.inference.RunResult
-import com.arm.learningpath.texttotext.inference.RuntimeRunner
+import com.arm.learningpath.texttotext.inference.TextEmbeddingRunner
+import com.arm.learningpath.texttotext.inference.TextGenerationRunner
 
 import java.io.File
 
 class MockRuntimeRunner(
     private val warning: String? = null,
-) : RuntimeRunner {
+) : TextGenerationRunner, TextEmbeddingRunner {
     private var config: ModelConfig? = null
     private var loadTimeMs: Long = 0
 

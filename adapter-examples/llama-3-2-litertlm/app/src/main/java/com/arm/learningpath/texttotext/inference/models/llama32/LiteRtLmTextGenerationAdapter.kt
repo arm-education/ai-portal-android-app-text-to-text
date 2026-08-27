@@ -8,17 +8,17 @@ import com.google.ai.edge.litertlm.EngineConfig
 import com.google.ai.edge.litertlm.SamplerConfig
 import com.arm.learningpath.texttotext.catalog.ModelConfig
 import com.arm.learningpath.texttotext.inference.RunResult
-import com.arm.learningpath.texttotext.inference.RuntimeRunner
+import com.arm.learningpath.texttotext.inference.TextGenerationRunner
 import java.io.File
 
-class LiteRtLmTextGenerationAdapter : RuntimeRunner {
+class LiteRtLmTextGenerationAdapter : TextGenerationRunner {
     private var config: ModelConfig? = null
     private var engine: Engine? = null
     private var loadTimeMs: Long = 0
 
     override fun load(modelDir: File, config: ModelConfig): Long {
         val started = System.nanoTime()
-        require(config.runtime == "litert-lm") {
+        require(config.runtime == ModelConfig.RUNTIME_LITERT_LM) {
             "LiteRtLmTextGenerationAdapter requires runtime 'litert-lm', got '${config.runtime}'."
         }
         require(config.requiresGeneration) {
@@ -85,10 +85,6 @@ class LiteRtLmTextGenerationAdapter : RuntimeRunner {
         }
 
         return RunResult(output, loadTimeMs, elapsedMs(started))
-    }
-
-    override fun runEmbedding(text: String): RunResult {
-        error("LiteRtLmTextGenerationAdapter supports text generation, not embeddings.")
     }
 
     override fun close() {

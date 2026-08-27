@@ -24,6 +24,8 @@ import com.arm.learningpath.texttotext.catalog.ModelCatalog
 import com.arm.learningpath.texttotext.catalog.ModelConfig
 import com.arm.learningpath.texttotext.inference.RuntimeRunner
 import com.arm.learningpath.texttotext.inference.RuntimeRunnerFactory
+import com.arm.learningpath.texttotext.inference.TextEmbeddingRunner
+import com.arm.learningpath.texttotext.inference.TextGenerationRunner
 import com.arm.learningpath.texttotext.storage.ModelStorage
 import java.io.File
 
@@ -283,9 +285,13 @@ class MainActivity : Activity() {
         Thread {
             try {
                 val result = if (selected.requiresEmbedding) {
-                    activeRunner.runEmbedding(input)
+                    val embeddingRunner = activeRunner as? TextEmbeddingRunner
+                        ?: error("Selected adapter does not implement text embedding.")
+                    embeddingRunner.runEmbedding(input)
                 } else {
-                    activeRunner.runTextGeneration(input)
+                    val generationRunner = activeRunner as? TextGenerationRunner
+                        ?: error("Selected adapter does not implement text generation.")
+                    generationRunner.runTextGeneration(input)
                 }
                 showResult(
                     status = "Load: ${result.loadTimeMs} ms | Run: ${result.runTimeMs} ms",
@@ -312,7 +318,7 @@ class MainActivity : Activity() {
 
         val selected = selectedConfig()
         val dir = modelDir(selected)
-        if (selected.runtime == "mock") {
+        if (selected.runtime == ModelConfig.RUNTIME_MOCK) {
             statusView.text = """
                 Runtime: ${selected.runtime}
                 Workload: ${selected.workload}

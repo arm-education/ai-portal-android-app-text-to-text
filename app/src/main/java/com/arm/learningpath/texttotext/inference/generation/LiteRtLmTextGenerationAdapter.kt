@@ -2,11 +2,11 @@ package com.arm.learningpath.texttotext.inference.generation
 
 import com.arm.learningpath.texttotext.catalog.ModelConfig
 import com.arm.learningpath.texttotext.inference.RunResult
-import com.arm.learningpath.texttotext.inference.RuntimeRunner
+import com.arm.learningpath.texttotext.inference.TextGenerationRunner
 
 import java.io.File
 
-class LiteRtLmTextGenerationAdapter : RuntimeRunner {
+class LiteRtLmTextGenerationAdapter : TextGenerationRunner {
     private var config: ModelConfig? = null
     private var loadTimeMs: Long = 0
 
@@ -37,10 +37,6 @@ class LiteRtLmTextGenerationAdapter : RuntimeRunner {
         """.trimIndent()
 
         return RunResult(output, loadTimeMs, elapsedMs(started))
-    }
-
-    override fun runEmbedding(text: String): RunResult {
-        error("LiteRtLmTextGenerationAdapter supports text generation, not embeddings.")
     }
 
     override fun close() {

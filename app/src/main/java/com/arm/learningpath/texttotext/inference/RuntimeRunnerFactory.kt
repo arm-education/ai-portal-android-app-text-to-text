@@ -10,11 +10,15 @@ import com.arm.learningpath.texttotext.inference.mock.MockRuntimeRunner
 object RuntimeRunnerFactory {
     fun create(config: ModelConfig): RuntimeRunner {
         return when (config.runtime) {
-            "executorch" -> ExecuTorchTextGenerationAdapter()
-            "litert-lm" -> LiteRtLmTextGenerationAdapter()
-            "litert", "tflite" -> LiteRtEmbeddingAdapter()
-            "onnx", "onnxruntime", "onnxruntime-genai" -> OnnxTextGenerationAdapter()
-            "mock" -> MockRuntimeRunner()
+            ModelConfig.RUNTIME_EXECUTORCH -> ExecuTorchTextGenerationAdapter()
+            ModelConfig.RUNTIME_LITERT_LM -> LiteRtLmTextGenerationAdapter()
+            ModelConfig.RUNTIME_LITERT,
+            ModelConfig.RUNTIME_TFLITE -> LiteRtEmbeddingAdapter()
+            ModelConfig.RUNTIME_ONNX,
+            ModelConfig.RUNTIME_ONNX_RUNTIME,
+            ModelConfig.RUNTIME_ONNX_RUNTIME_GENAI -> OnnxTextGenerationAdapter()
+            // Keep mock explicit so intentional mock catalog entries run without a missing-adapter warning.
+            ModelConfig.RUNTIME_MOCK -> MockRuntimeRunner()
             else -> MockRuntimeRunner(
                 warning = "No adapter is registered for runtime '${config.runtime}'. Running mock output."
             )

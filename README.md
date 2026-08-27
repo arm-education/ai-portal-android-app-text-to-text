@@ -100,7 +100,7 @@ For directory artifacts, create the same directory structure under `files/models
 
 ## Complete a runtime adapter
 
-Use the adapter-agent prompt shown in the Learning Path page with an approved AI coding agent. The prompt asks the agent to read the model card, inspected model context, and local starter app, then edit only the selected runtime adapter and Gradle dependency files.
+Use the adapter-agent prompt shown in the Learning Path page with an approved AI coding agent. The prompt asks the agent to read the model card, inspected model context, and local starter app, then update the selected runtime adapter, catalog entry, factory registration, and Gradle dependency files needed for that model.
 
 Runtime tensor names are not always semantic. If an exported Android artifact exposes internal, numeric, or graph-generated tensor names, map semantic inputs using the model card, runtime config, tokenizer/config files, documented order, shapes, and dtypes. Do not fail only because a runtime tensor name differs from a model-card name.
 

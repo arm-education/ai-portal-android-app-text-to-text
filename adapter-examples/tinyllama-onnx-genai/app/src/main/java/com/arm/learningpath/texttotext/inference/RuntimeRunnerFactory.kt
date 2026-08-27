@@ -7,8 +7,9 @@ import com.arm.learningpath.texttotext.inference.models.tinyllama.OnnxTextGenera
 object RuntimeRunnerFactory {
     fun create(config: ModelConfig): RuntimeRunner {
         return when (config.runtime) {
-            "onnxruntime" -> OnnxTextGenerationAdapter()
-            "mock" -> MockRuntimeRunner()
+            ModelConfig.RUNTIME_ONNX_RUNTIME -> OnnxTextGenerationAdapter()
+            // Keep mock explicit so intentional mock catalog entries run without a missing-adapter warning.
+            ModelConfig.RUNTIME_MOCK -> MockRuntimeRunner()
             else -> MockRuntimeRunner(
                 warning = "No adapter is registered for runtime '${config.runtime}'. Running mock output."
             )

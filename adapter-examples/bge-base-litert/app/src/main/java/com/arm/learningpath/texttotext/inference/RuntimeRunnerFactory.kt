@@ -7,8 +7,9 @@ import com.arm.learningpath.texttotext.inference.models.bge.LiteRtEmbeddingAdapt
 object RuntimeRunnerFactory {
     fun create(config: ModelConfig): RuntimeRunner {
         return when (config.runtime) {
-            "litert" -> LiteRtEmbeddingAdapter()
-            "mock" -> MockRuntimeRunner()
+            ModelConfig.RUNTIME_LITERT -> LiteRtEmbeddingAdapter()
+            // Keep mock explicit so intentional mock catalog entries run without a missing-adapter warning.
+            ModelConfig.RUNTIME_MOCK -> MockRuntimeRunner()
             else -> MockRuntimeRunner(
                 warning = "No adapter is registered for runtime '${config.runtime}'. Running mock output."
             )

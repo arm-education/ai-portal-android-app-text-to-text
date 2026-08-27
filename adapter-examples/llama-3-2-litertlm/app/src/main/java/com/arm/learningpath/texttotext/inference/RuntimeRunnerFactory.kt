@@ -7,8 +7,9 @@ import com.arm.learningpath.texttotext.inference.models.llama32.LiteRtLmTextGene
 object RuntimeRunnerFactory {
     fun create(config: ModelConfig): RuntimeRunner {
         return when (config.runtime) {
-            "litert-lm" -> LiteRtLmTextGenerationAdapter()
-            "mock" -> MockRuntimeRunner()
+            ModelConfig.RUNTIME_LITERT_LM -> LiteRtLmTextGenerationAdapter()
+            // Keep mock explicit so intentional mock catalog entries run without a missing-adapter warning.
+            ModelConfig.RUNTIME_MOCK -> MockRuntimeRunner()
             else -> MockRuntimeRunner(
                 warning = "No adapter is registered for runtime '${config.runtime}'. Running mock output."
             )

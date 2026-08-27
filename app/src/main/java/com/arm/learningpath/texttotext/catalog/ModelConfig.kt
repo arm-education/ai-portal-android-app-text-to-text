@@ -32,6 +32,14 @@ data class ModelConfig(
     companion object {
         const val WORKLOAD_TEXT_GENERATION = "text-generation"
         const val WORKLOAD_TEXT_EMBEDDING = "text-embedding"
+        const val RUNTIME_EXECUTORCH = "executorch"
+        const val RUNTIME_LITERT_LM = "litert-lm"
+        const val RUNTIME_LITERT = "litert"
+        const val RUNTIME_TFLITE = "tflite"
+        const val RUNTIME_ONNX = "onnx"
+        const val RUNTIME_ONNX_RUNTIME = "onnxruntime"
+        const val RUNTIME_ONNX_RUNTIME_GENAI = "onnxruntime-genai"
+        const val RUNTIME_MOCK = "mock"
     }
 }
 

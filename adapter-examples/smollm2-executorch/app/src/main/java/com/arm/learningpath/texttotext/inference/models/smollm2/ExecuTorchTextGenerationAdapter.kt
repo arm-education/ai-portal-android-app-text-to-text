@@ -6,12 +6,12 @@ import org.pytorch.executorch.Module
 import org.pytorch.executorch.Tensor
 import com.arm.learningpath.texttotext.catalog.ModelConfig
 import com.arm.learningpath.texttotext.inference.RunResult
-import com.arm.learningpath.texttotext.inference.RuntimeRunner
+import com.arm.learningpath.texttotext.inference.TextGenerationRunner
 import java.io.File
 import kotlin.math.min
 import kotlin.system.measureTimeMillis
 
-class ExecuTorchTextGenerationAdapter : RuntimeRunner {
+class ExecuTorchTextGenerationAdapter : TextGenerationRunner {
     private var module: Module? = null
     private var tokenizer: ByteLevelBpeTokenizer? = null
     private var loadTimeMs: Long = 0L
@@ -76,10 +76,6 @@ class ExecuTorchTextGenerationAdapter : RuntimeRunner {
         return RunResult(text = completion, loadTimeMs = loadTimeMs, runTimeMs = runMs)
     }
 
-    override fun runEmbedding(text: String): RunResult {
-        error("ExecuTorchTextGenerationAdapter supports text generation, not embeddings.")
-    }
-
     override fun close() {
         module?.destroy()
         module = null
@@ -87,7 +83,7 @@ class ExecuTorchTextGenerationAdapter : RuntimeRunner {
     }
 
     private fun validateModelFiles(modelDir: File, config: ModelConfig) {
-        require(config.runtime == "executorch") {
+        require(config.runtime == ModelConfig.RUNTIME_EXECUTORCH) {
             "ExecuTorchTextGenerationAdapter cannot run runtime '${config.runtime}'."
         }
         require(config.workload == ModelConfig.WORKLOAD_TEXT_GENERATION) {

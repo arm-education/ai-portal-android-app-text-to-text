@@ -6,13 +6,13 @@ import org.tensorflow.lite.Interpreter
 import org.tensorflow.lite.Tensor
 import com.arm.learningpath.texttotext.catalog.ModelConfig
 import com.arm.learningpath.texttotext.inference.RunResult
-import com.arm.learningpath.texttotext.inference.RuntimeRunner
+import com.arm.learningpath.texttotext.inference.TextEmbeddingRunner
 import java.io.File
 import java.text.Normalizer
 import java.util.Locale
 import kotlin.math.sqrt
 
-class LiteRtEmbeddingAdapter : RuntimeRunner {
+class LiteRtEmbeddingAdapter : TextEmbeddingRunner {
     private var config: ModelConfig? = null
     private var interpreter: Interpreter? = null
     private var tokenizer: BertWordPieceTokenizer? = null
@@ -26,7 +26,7 @@ class LiteRtEmbeddingAdapter : RuntimeRunner {
         require(config.requiresEmbedding) {
             "LiteRT embedding adapter cannot run workload '${config.workload}'."
         }
-        require(config.runtime == "litert" || config.runtime == "tflite") {
+        require(config.runtime == ModelConfig.RUNTIME_LITERT || config.runtime == ModelConfig.RUNTIME_TFLITE) {
             "LiteRT embedding adapter cannot run runtime '${config.runtime}'."
         }
 
@@ -55,10 +55,6 @@ class LiteRtEmbeddingAdapter : RuntimeRunner {
 
         loadTimeMs = elapsedMs(started)
         return loadTimeMs
-    }
-
-    override fun runTextGeneration(prompt: String): RunResult {
-        error("LiteRtEmbeddingAdapter supports embeddings, not text generation.")
     }
 
     override fun runEmbedding(text: String): RunResult {

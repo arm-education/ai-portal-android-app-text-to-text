@@ -7,8 +7,9 @@ import com.arm.learningpath.texttotext.inference.models.smollm2.ExecuTorchTextGe
 object RuntimeRunnerFactory {
     fun create(config: ModelConfig): RuntimeRunner {
         return when (config.runtime) {
-            "executorch" -> ExecuTorchTextGenerationAdapter()
-            "mock" -> MockRuntimeRunner()
+            ModelConfig.RUNTIME_EXECUTORCH -> ExecuTorchTextGenerationAdapter()
+            // Keep mock explicit so intentional mock catalog entries run without a missing-adapter warning.
+            ModelConfig.RUNTIME_MOCK -> MockRuntimeRunner()
             else -> MockRuntimeRunner(
                 warning = "No adapter is registered for runtime '${config.runtime}'. Running mock output."
             )
