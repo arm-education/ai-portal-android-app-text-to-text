@@ -6,7 +6,7 @@
     "runtime": "executorch",
     "artifactType": "file",
     "artifactPath": "smollm2-360m-instruct-8da4w-xnnpack-executorch",
-    "modelFile": "smollm2-360m-instruct-8da4w-executorch.pte",
+    "modelFile": "HuggingFaceTB__SmolLM2-360M-Instruct_executorch_optimized.pte",
     "externalDataFiles": [],
     "runtimeConfig": "config.yaml",
     "tokenizerFiles": [
