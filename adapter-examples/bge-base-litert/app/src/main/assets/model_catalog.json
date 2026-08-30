@@ -6,7 +6,7 @@
     "runtime": "litert",
     "artifactType": "file",
     "artifactPath": "bge-base-en-v1.5-int8-litert",
-    "modelFile": "bge-base-en-v1.5-int8-litert.tflite",
+    "modelFile": "bge-base-en-v1.5_litert_optimized.tflite",
     "externalDataFiles": [],
     "runtimeConfig": "config.yaml",
     "tokenizerFiles": [
