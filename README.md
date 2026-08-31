@@ -57,6 +57,12 @@ The starter app pins Java and Kotlin compilation to JVM 17 in `app/build.gradle.
 
 The default mock catalog entries do not require model files. Use them to confirm that the app opens, loads, and runs before you add a real runtime adapter. When a mock entry is selected, the app ignores `filesDir/models/<model-id>/`.
 
+Run the local unit tests to check catalog parsing, runtime routing, and mock runner behavior:
+
+```bash
+./gradlew testDebugUnitTest
+```
+
 ## Add a model
 
 Edit `app/src/main/assets/model_catalog.json` and add one entry for your selected model. Keep model-specific fields in the catalog instead of hard-coding them in the UI.
