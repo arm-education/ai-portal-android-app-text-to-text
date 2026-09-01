@@ -1,8 +1,12 @@
-package com.arm.learningpath.texttotext
+package com.arm.learningpath.texttotext.inference.embedding
+
+import com.arm.learningpath.texttotext.catalog.ModelConfig
+import com.arm.learningpath.texttotext.inference.RunResult
+import com.arm.learningpath.texttotext.inference.TextEmbeddingRunner
 
 import java.io.File
 
-class LiteRtEmbeddingAdapter : RuntimeRunner {
+class LiteRtEmbeddingAdapter : TextEmbeddingRunner {
     private var config: ModelConfig? = null
     private var loadTimeMs: Long = 0
 
@@ -22,10 +26,6 @@ class LiteRtEmbeddingAdapter : RuntimeRunner {
         // TODO: Initialize tokenizer handling required by the selected model.
         loadTimeMs = elapsedMs(started)
         return loadTimeMs
-    }
-
-    override fun runTextGeneration(prompt: String): RunResult {
-        error("LiteRtEmbeddingAdapter supports embeddings, not text generation.")
     }
 
     override fun runEmbedding(text: String): RunResult {

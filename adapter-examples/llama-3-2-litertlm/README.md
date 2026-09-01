@@ -11,7 +11,8 @@ This example provides the minimal files needed to apply the validated LiteRT-LM 
 ## Files
 
 - `app/src/main/assets/model_catalog.json`
-- `app/src/main/java/com/arm/learningpath/texttotext/LiteRtLmTextGenerationAdapter.kt`
+- `app/src/main/java/com/arm/learningpath/texttotext/inference/models/llama32/LiteRtLmTextGenerationAdapter.kt`
+- `app/src/main/java/com/arm/learningpath/texttotext/inference/RuntimeRunnerFactory.kt`
 - `app/build.gradle.kts`
 
 ## Apply

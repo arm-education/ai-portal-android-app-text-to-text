@@ -8,6 +8,7 @@ Each example includes:
 
 - `app/src/main/assets/model_catalog.json`
 - one matching runtime adapter Kotlin file
+- `app/src/main/java/com/arm/learningpath/texttotext/inference/RuntimeRunnerFactory.kt`
 - `app/build.gradle.kts` from the validated integration
 - a short model-specific README
 
@@ -32,4 +33,3 @@ cp -R adapter-examples/<example-name>/app/. app/
 Then open or sync the project in Android Studio and build the app.
 
 Use only one example at a time. If you switch to another runtime, reapply the clean starter app or undo the previous example before applying the next one.
-

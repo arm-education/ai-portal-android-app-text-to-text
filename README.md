@@ -16,6 +16,33 @@ The app is intentionally model-independent. It provides:
 
 Validated adapter examples are provided under `adapter-examples/`. Use one of those examples when your selected model matches a validated integration. Keep the default app lightweight until you choose a runtime.
 
+## Project structure
+
+The app separates reusable infrastructure from runtime and model-specific code:
+
+```text
+app/src/main/java/com/arm/learningpath/texttotext/
+├── ui/
+├── catalog/
+├── storage/
+└── inference/
+    ├── embedding/
+    ├── generation/
+    ├── mock/
+    └── models/
+```
+
+The reusable shell lives in:
+
+- `ui/` for the Android activity and shared text input/result interface.
+- `catalog/` for catalog parsing and model metadata.
+- `storage/` for app-private model directory resolution.
+- `inference/` for the runtime adapter interface, result contract, and factory registration.
+
+The base app keeps mock and placeholder adapters under `inference/mock/`, `inference/generation/`, and `inference/embedding/`. Validated examples place model-specific implementations under `inference/models/<model-name>/` and replace `inference/RuntimeRunnerFactory.kt` so the selected catalog runtime maps to that implementation.
+
+For a new model, developers should normally update `model_catalog.json`, add or adapt a model-specific package under `inference/models/`, and register that adapter in `inference/RuntimeRunnerFactory.kt`. Keep tokenizer handling, tensor mapping, preprocessing, runtime execution, and output cleanup out of the UI layer so each part can be reviewed and tested independently.
+
 ## Open the project
 
 Open this directory in Android Studio:
@@ -29,6 +56,12 @@ Sync the Gradle project, connect an Android device, and run the app.
 The starter app pins Java and Kotlin compilation to JVM 17 in `app/build.gradle.kts`.
 
 The default mock catalog entries do not require model files. Use them to confirm that the app opens, loads, and runs before you add a real runtime adapter. When a mock entry is selected, the app ignores `filesDir/models/<model-id>/`.
+
+Run the local unit tests to check catalog parsing, runtime routing, and mock runner behavior:
+
+```bash
+./gradlew testDebugUnitTest
+```
 
 ## Add a model
 
@@ -73,7 +106,7 @@ For directory artifacts, create the same directory structure under `files/models
 
 ## Complete a runtime adapter
 
-Use the adapter-agent prompt shown in the Learning Path page with an approved AI coding agent. The prompt asks the agent to read the model card, inspected model context, and local starter app, then edit only the selected runtime adapter and Gradle dependency files.
+Use the adapter-agent prompt shown in the Learning Path page with an approved AI coding agent. The prompt asks the agent to read the model card, inspected model context, and local starter app, then update the selected runtime adapter, catalog entry, factory registration, and Gradle dependency files needed for that model.
 
 Runtime tensor names are not always semantic. If an exported Android artifact exposes internal, numeric, or graph-generated tensor names, map semantic inputs using the model card, runtime config, tokenizer/config files, documented order, shapes, and dtypes. Do not fail only because a runtime tensor name differs from a model-card name.
 

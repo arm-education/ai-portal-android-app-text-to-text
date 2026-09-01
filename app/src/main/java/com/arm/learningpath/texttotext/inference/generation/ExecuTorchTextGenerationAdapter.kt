@@ -1,8 +1,12 @@
-package com.arm.learningpath.texttotext
+package com.arm.learningpath.texttotext.inference.generation
+
+import com.arm.learningpath.texttotext.catalog.ModelConfig
+import com.arm.learningpath.texttotext.inference.RunResult
+import com.arm.learningpath.texttotext.inference.TextGenerationRunner
 
 import java.io.File
 
-class ExecuTorchTextGenerationAdapter : RuntimeRunner {
+class ExecuTorchTextGenerationAdapter : TextGenerationRunner {
     override fun load(modelDir: File, config: ModelConfig): Long {
         validateModelFiles(modelDir, config)
         // TODO: Map semantic inputs to runtime tensors by meaningful name when available.
@@ -12,10 +16,6 @@ class ExecuTorchTextGenerationAdapter : RuntimeRunner {
 
     override fun runTextGeneration(prompt: String): RunResult {
         error("Replace this stub with ExecuTorch generation code. Prompt: $prompt")
-    }
-
-    override fun runEmbedding(text: String): RunResult {
-        error("ExecuTorchTextGenerationAdapter supports text generation, not embeddings.")
     }
 
     override fun close() {

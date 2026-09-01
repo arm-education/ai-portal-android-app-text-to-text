@@ -1,4 +1,4 @@
-package com.arm.learningpath.texttotext
+package com.arm.learningpath.texttotext.ui
 
 import android.app.Activity
 import android.graphics.Color
@@ -20,6 +20,13 @@ import android.widget.ListView
 import android.widget.PopupWindow
 import android.widget.ScrollView
 import android.widget.TextView
+import com.arm.learningpath.texttotext.catalog.ModelCatalog
+import com.arm.learningpath.texttotext.catalog.ModelConfig
+import com.arm.learningpath.texttotext.inference.RuntimeRunner
+import com.arm.learningpath.texttotext.inference.RuntimeRunnerFactory
+import com.arm.learningpath.texttotext.inference.TextEmbeddingRunner
+import com.arm.learningpath.texttotext.inference.TextGenerationRunner
+import com.arm.learningpath.texttotext.storage.ModelStorage
 import java.io.File
 
 class MainActivity : Activity() {
@@ -278,9 +285,13 @@ class MainActivity : Activity() {
         Thread {
             try {
                 val result = if (selected.requiresEmbedding) {
-                    activeRunner.runEmbedding(input)
+                    val embeddingRunner = activeRunner as? TextEmbeddingRunner
+                        ?: error("Selected adapter does not implement text embedding.")
+                    embeddingRunner.runEmbedding(input)
                 } else {
-                    activeRunner.runTextGeneration(input)
+                    val generationRunner = activeRunner as? TextGenerationRunner
+                        ?: error("Selected adapter does not implement text generation.")
+                    generationRunner.runTextGeneration(input)
                 }
                 showResult(
                     status = "Load: ${result.loadTimeMs} ms | Run: ${result.runTimeMs} ms",
@@ -297,7 +308,7 @@ class MainActivity : Activity() {
     }
 
     private fun modelDir(config: ModelConfig): File {
-        return File(filesDir, "models/${config.id}")
+        return ModelStorage.modelDir(this, config)
     }
 
     private fun updateSelectedModelStatus() {
@@ -307,7 +318,7 @@ class MainActivity : Activity() {
 
         val selected = selectedConfig()
         val dir = modelDir(selected)
-        if (selected.runtime == "mock") {
+        if (selected.runtime == ModelConfig.RUNTIME_MOCK) {
             statusView.text = """
                 Runtime: ${selected.runtime}
                 Workload: ${selected.workload}

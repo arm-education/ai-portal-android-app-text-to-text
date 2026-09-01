@@ -1,4 +1,5 @@
-package com.arm.learningpath.texttotext
+package com.arm.learningpath.texttotext.catalog
+
 
 import android.content.Context
 import org.json.JSONArray

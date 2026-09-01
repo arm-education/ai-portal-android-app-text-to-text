@@ -1,8 +1,12 @@
-package com.arm.learningpath.texttotext
+package com.arm.learningpath.texttotext.inference.generation
+
+import com.arm.learningpath.texttotext.catalog.ModelConfig
+import com.arm.learningpath.texttotext.inference.RunResult
+import com.arm.learningpath.texttotext.inference.TextGenerationRunner
 
 import java.io.File
 
-class OnnxTextGenerationAdapter : RuntimeRunner {
+class OnnxTextGenerationAdapter : TextGenerationRunner {
     private var config: ModelConfig? = null
     private var loadTimeMs: Long = 0
 
@@ -35,10 +39,6 @@ class OnnxTextGenerationAdapter : RuntimeRunner {
         """.trimIndent()
 
         return RunResult(output, loadTimeMs, elapsedMs(started))
-    }
-
-    override fun runEmbedding(text: String): RunResult {
-        error("OnnxTextGenerationAdapter currently supports text generation only.")
     }
 
     override fun close() {
