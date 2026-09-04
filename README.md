@@ -2,7 +2,7 @@
 
 This repository contains an Android starter application for running text-generation and text-embedding models as part of the Arm Learning Path **Run text-to-text models on Android**.
 
-The app is intended for learning how text-to-text models run on the device and is not a reference production application. It is provided under the [Arm Education End User License Agreement](LICENSE.md).
+The app is intended for learning how text-to-text models run on the device and is not a reference production application.
 
 The base app declares no Android permissions and does not send prompts or results off the device.
 
