@@ -1,0 +1,50 @@
+[
+  {
+    "id": "llama-3-2-1b-instruct-onnx-genai-int4-kquantlast-emb-int8-vivo-x300",
+    "displayName": "Llama 3.2 1B Instruct ONNX GenAI INT4",
+    "workload": "text-generation",
+    "runtime": "onnxruntime",
+    "artifactType": "directory",
+    "artifactPath": "llama-3-2-1b-instruct-onnx-genai-int4-kquantlast-emb-int8-vivo-x300",
+    "modelFile": "model.onnx",
+    "externalDataFiles": [
+      "model.onnx.data"
+    ],
+    "runtimeConfig": "genai_config.json",
+    "tokenizerFiles": [
+      "tokenizer.json",
+      "tokenizer_config.json"
+    ],
+    "chatTemplate": "chat_template.jinja",
+    "maxInputTokens": 4096,
+    "maxNewTokens": 64,
+    "embeddingDimensions": 0,
+    "normalizeEmbeddings": false,
+    "inputTensorNames": [
+      "input_ids",
+      "attention_mask"
+    ],
+    "outputTensorNames": [
+      "logits"
+    ]
+  },
+  {
+    "id": "sample-text-embedding",
+    "displayName": "Text embedding model (mock)",
+    "workload": "text-embedding",
+    "runtime": "mock",
+    "artifactType": "directory",
+    "artifactPath": "sample-text-embedding",
+    "modelFile": "",
+    "externalDataFiles": [],
+    "runtimeConfig": "",
+    "tokenizerFiles": [],
+    "chatTemplate": "",
+    "maxInputTokens": 0,
+    "maxNewTokens": 0,
+    "embeddingDimensions": 384,
+    "normalizeEmbeddings": true,
+    "inputTensorNames": [],
+    "outputTensorNames": []
+  }
+]
