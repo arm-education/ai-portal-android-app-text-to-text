@@ -49,7 +49,7 @@ For a new model, developers should normally update `app/src/main/assets/model_ca
 The base app requires:
 
 - Android Studio with Android SDK Platform 35
-- JDK 17
+- JDK 17 or later to launch Gradle. The project uses or automatically downloads a JDK 17 build toolchain.
 - an Android device or emulator running Android 8.0 (API level 26) or later
 
 Python 3.10 or later is required only for `scripts/inspect_android_model.py`. Android SDK Platform-Tools (`adb`) are required only to copy model artifacts manually. Adapter examples can set a higher minimum API level or add runtime-specific requirements; review an example's README and `app/build.gradle.kts` before applying it.
