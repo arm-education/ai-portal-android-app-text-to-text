@@ -98,15 +98,21 @@ class LlamaCppTextGenerationAdapter(
     }
 
     private fun cleanAssistantCompletion(decoded: String, originalPrompt: String): String {
-        var cleaned = decoded
-            .removePrefix(originalPrompt)
-            .replace("<|im_start|>assistant", "")
-            .replace("<|im_start|>", "")
-            .replace("<|im_end|>", "")
-            .replace("<|endoftext|>", "")
-            .trim()
+        var cleaned = decoded.trim().removePrefix(originalPrompt).trim()
 
-        val stopMarkers = listOf("<|im_start|>user", "<|im_start|>system", "<|im_start|>assistant", "User:", "System:")
+        val stopMarkers = listOf(
+            "<|im_start|>user",
+            "<|im_start|>system",
+            "<|im_start|>assistant",
+            "<|im_end|>",
+            "<|endoftext|>",
+            "<|end_of_text|>",
+            "<|eot_id|>",
+            "User:",
+            "System:",
+            "\nUser:",
+            "\nSystem:",
+        )
         val markerIndex = stopMarkers
             .map { cleaned.indexOf(it) }
             .filter { it >= 0 }
@@ -115,7 +121,12 @@ class LlamaCppTextGenerationAdapter(
             cleaned = cleaned.substring(0, markerIndex).trimEnd()
         }
 
-        return cleaned.trim()
+        return cleaned
+            .replace(Regex("(?is)<think>.*?</think>"), "")
+            .replace(Regex("""(?is)Stats:\s*\{.*?}\s*$"""), "")
+            .replace(Regex("""<\|/?[A-Za-z0-9_\-]+\|>"""), "")
+            .replace(Regex("""(?im)^\s*(assistant|system|user)\s*:\s*"""), "")
+            .trim()
     }
 
     private fun elapsedMs(started: Long): Long {

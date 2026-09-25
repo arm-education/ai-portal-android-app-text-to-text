@@ -27,7 +27,7 @@ kotlin {
 
 dependencies {
     implementation(files("libs/lib-release.aar"))
-    implementation("androidx.core:core-ktx:1.17.0")
+    implementation("androidx.core:core-ktx:1.15.0")
     implementation("androidx.datastore:datastore-preferences:1.2.0")
 
     testImplementation("junit:junit:4.13.2")
