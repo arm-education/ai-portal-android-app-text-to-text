@@ -78,7 +78,7 @@ From the repository root, generate local context for a downloaded model folder:
 python3 scripts/inspect_android_model.py \
   --model-id <model-id> \
   --model-source <model-source-or-card-url> \
-  --runtime <executorch|litert|litert-lm|onnxruntime> \
+  --runtime <executorch|litert|litert-lm|onnxruntime|llamacpp> \
   --workload <text-generation|text-embedding> \
   --local-model-dir <local-model-folder>
 ```

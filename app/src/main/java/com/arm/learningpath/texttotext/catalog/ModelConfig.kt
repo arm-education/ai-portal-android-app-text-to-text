@@ -39,6 +39,7 @@ data class ModelConfig(
         const val RUNTIME_ONNX = "onnx"
         const val RUNTIME_ONNX_RUNTIME = "onnxruntime"
         const val RUNTIME_ONNX_RUNTIME_GENAI = "onnxruntime-genai"
+        const val RUNTIME_LLAMACPP = "llamacpp"
         const val RUNTIME_MOCK = "mock"
     }
 }

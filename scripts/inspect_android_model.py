@@ -20,6 +20,7 @@ RUNTIME_EXTENSIONS = {
     "onnx": [".onnx"],
     "onnxruntime": [".onnx"],
     "onnxruntime-genai": [".onnx"],
+    "llamacpp": [".gguf"],
 }
 
 TOKENIZER_NAMES = {
@@ -81,7 +82,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--model-id", required=True, help="Stable ID used in model_catalog.json.")
     parser.add_argument("--model-source", required=True, help="Model repository URL, model card URL, or artifact source.")
-    parser.add_argument("--runtime", required=True, help="Runtime value, such as executorch, litert, litert-lm, or onnxruntime.")
+    parser.add_argument("--runtime", required=True, help="Runtime value, such as executorch, litert, litert-lm, onnxruntime, or llamacpp.")
     parser.add_argument("--workload", required=True, choices=["text-generation", "text-embedding"])
     parser.add_argument("--local-model-dir", required=True, type=Path, help="Directory containing downloaded model files.")
     parser.add_argument(

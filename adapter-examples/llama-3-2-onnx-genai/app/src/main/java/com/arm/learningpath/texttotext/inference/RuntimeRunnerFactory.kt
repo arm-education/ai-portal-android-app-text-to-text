@@ -1,11 +1,12 @@
 package com.arm.learningpath.texttotext.inference
 
+import android.content.Context
 import com.arm.learningpath.texttotext.catalog.ModelConfig
 import com.arm.learningpath.texttotext.inference.mock.MockRuntimeRunner
 import com.arm.learningpath.texttotext.inference.models.llama32.OnnxTextGenerationAdapter
 
 object RuntimeRunnerFactory {
-    fun create(config: ModelConfig): RuntimeRunner {
+    fun create(config: ModelConfig, context: Context? = null): RuntimeRunner {
         return when (config.runtime) {
             ModelConfig.RUNTIME_ONNX_RUNTIME -> OnnxTextGenerationAdapter()
             ModelConfig.RUNTIME_ONNX_RUNTIME_GENAI -> OnnxTextGenerationAdapter()

@@ -258,7 +258,7 @@ class MainActivity : Activity() {
         Thread {
             try {
                 runner?.close()
-                val nextRunner = RuntimeRunnerFactory.create(selected)
+                val nextRunner = RuntimeRunnerFactory.create(selected, applicationContext)
                 val loadTimeMs = nextRunner.load(modelDir, selected)
                 runner = nextRunner
                 loadedConfig = selected

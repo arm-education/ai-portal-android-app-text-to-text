@@ -4,6 +4,7 @@ import com.arm.learningpath.texttotext.catalog.ModelConfig
 import com.arm.learningpath.texttotext.inference.embedding.LiteRtEmbeddingAdapter
 import com.arm.learningpath.texttotext.inference.generation.ExecuTorchTextGenerationAdapter
 import com.arm.learningpath.texttotext.inference.generation.LiteRtLmTextGenerationAdapter
+import com.arm.learningpath.texttotext.inference.generation.LlamaCppTextGenerationAdapter
 import com.arm.learningpath.texttotext.inference.generation.OnnxTextGenerationAdapter
 import com.arm.learningpath.texttotext.inference.mock.MockRuntimeRunner
 import org.junit.Assert.assertTrue
@@ -17,6 +18,7 @@ class RuntimeRunnerFactoryTest {
         assertTrue(runnerFor(ModelConfig.RUNTIME_ONNX) is OnnxTextGenerationAdapter)
         assertTrue(runnerFor(ModelConfig.RUNTIME_ONNX_RUNTIME) is OnnxTextGenerationAdapter)
         assertTrue(runnerFor(ModelConfig.RUNTIME_ONNX_RUNTIME_GENAI) is OnnxTextGenerationAdapter)
+        assertTrue(runnerFor(ModelConfig.RUNTIME_LLAMACPP) is LlamaCppTextGenerationAdapter)
     }
 
     @Test
