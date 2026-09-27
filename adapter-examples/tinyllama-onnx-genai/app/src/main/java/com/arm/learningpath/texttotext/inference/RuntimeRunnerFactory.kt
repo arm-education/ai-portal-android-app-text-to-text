@@ -1,11 +1,12 @@
 package com.arm.learningpath.texttotext.inference
 
+import android.content.Context
 import com.arm.learningpath.texttotext.catalog.ModelConfig
 import com.arm.learningpath.texttotext.inference.mock.MockRuntimeRunner
 import com.arm.learningpath.texttotext.inference.models.tinyllama.OnnxTextGenerationAdapter
 
 object RuntimeRunnerFactory {
-    fun create(config: ModelConfig): RuntimeRunner {
+    fun create(config: ModelConfig, context: Context? = null): RuntimeRunner {
         return when (config.runtime) {
             ModelConfig.RUNTIME_ONNX_RUNTIME -> OnnxTextGenerationAdapter()
             // Keep mock explicit so intentional mock catalog entries run without a missing-adapter warning.

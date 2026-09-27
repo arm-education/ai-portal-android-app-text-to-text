@@ -1,0 +1,40 @@
+[
+  {
+    "id": "qwen3-5-0-8b-q4-k-m-llamacpp-vivo-x300",
+    "displayName": "Qwen3.5 0.8B Q4_K_M llama.cpp",
+    "workload": "text-generation",
+    "runtime": "llamacpp",
+    "artifactType": "directory",
+    "artifactPath": "qwen3-5-0-8b-q4-k-m-llamacpp-vivo-x300",
+    "modelFile": "Qwen__Qwen3.5-0.8B_llamacpp_optimized.gguf",
+    "externalDataFiles": [],
+    "runtimeConfig": "config.yaml",
+    "tokenizerFiles": [],
+    "chatTemplate": "",
+    "maxInputTokens": 8192,
+    "maxNewTokens": 64,
+    "embeddingDimensions": 0,
+    "normalizeEmbeddings": false,
+    "inputTensorNames": [],
+    "outputTensorNames": []
+  },
+  {
+    "id": "sample-text-embedding",
+    "displayName": "Text embedding model (mock)",
+    "workload": "text-embedding",
+    "runtime": "mock",
+    "artifactType": "directory",
+    "artifactPath": "sample-text-embedding",
+    "modelFile": "",
+    "externalDataFiles": [],
+    "runtimeConfig": "",
+    "tokenizerFiles": [],
+    "chatTemplate": "",
+    "maxInputTokens": 0,
+    "maxNewTokens": 0,
+    "embeddingDimensions": 384,
+    "normalizeEmbeddings": true,
+    "inputTensorNames": [],
+    "outputTensorNames": []
+  }
+]
