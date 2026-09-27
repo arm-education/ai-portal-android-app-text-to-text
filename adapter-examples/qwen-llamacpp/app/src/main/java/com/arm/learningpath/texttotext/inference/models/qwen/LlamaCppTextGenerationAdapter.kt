@@ -123,7 +123,7 @@ class LlamaCppTextGenerationAdapter(
 
         return cleaned
             .replace(Regex("(?is)<think>.*?</think>"), "")
-            .replace(Regex("""(?is)Stats:\s*\{.*?}\s*$"""), "")
+            .replace(Regex("""(?is)Stats:\s*\{.*?\}\s*$"""), "")
             .replace(Regex("""<\|/?[A-Za-z0-9_\-]+\|>"""), "")
             .replace(Regex("""(?im)^\s*(assistant|system|user)\s*:\s*"""), "")
             .trim()
